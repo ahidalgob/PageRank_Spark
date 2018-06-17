@@ -1,3 +1,8 @@
+// TODO:
+// Change it into compilable class
+// Parameterise input/output files
+// Parameterise delta
+
 import org.apache.hadoop.fs.FileSystem
 import org.apache.hadoop.fs.Path
 val fs=FileSystem.get(sc.hadoopConfiguration)
