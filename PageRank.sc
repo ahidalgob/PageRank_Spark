@@ -1,6 +1,6 @@
 /* PageRank algorithm with Apache Spark
 * Execution:
-* Import into hdfs running: hdfs -put pr.sc .
+* Export input into hdfs running: hdfs -put graph.in .
 * Run spark-shell
 * Run :load pr.sc
 * Execute using
@@ -26,12 +26,6 @@ object PR {
 
     val original = pre_original.map({case (x,y) => (x, (1.0/nodes, y))})
 
-    val originalOutputPath="original"
-    if(fs.exists(new Path(originalOutputPath)))
-      fs.delete(new Path(originalOutputPath),true)
-    original.saveAsTextFile(originalOutputPath)
-
-
     var last = original
     var i = 0
     val d = 0.85
@@ -54,7 +48,7 @@ object PR {
       println("DeltaPR after iteration "+i+" is "+deltaPR)
     }
 
-    val endOutputPath=args(0) + ".outprueba"
+    val endOutputPath=args(0) + ".out"
     if(fs.exists(new Path(endOutputPath)))
       fs.delete(new Path(endOutputPath),true)
     last.saveAsTextFile(endOutputPath)
