@@ -23,6 +23,7 @@ object PR {
                           reduceByKey((x,y) =>  x++y)
 
     val nodes = pre_original.count()
+    prinln("Number of nodes: " + nodes)
 
     val original = pre_original.map({case (x,y) => (x, (1.0/nodes, y))})
 
