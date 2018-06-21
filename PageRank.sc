@@ -3,7 +3,7 @@
 * Import into hdfs running: hdfs -put pr.sc .
 * Run spark-shell
 * Run :load pr.sc
-* Execute using 
+* Execute using
 * PR.main(Array("InputFile", "MinDeltaIteration"))
 * Ex: PR.main(Array("NotreDame.in", "0.1"))
 */
@@ -58,5 +58,5 @@ object PR {
     if(fs.exists(new Path(endOutputPath)))
       fs.delete(new Path(endOutputPath),true)
     last.saveAsTextFile(endOutputPath)
-    }
+  }
 }
